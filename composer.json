@@ -7,6 +7,11 @@
             "Programmerzamannow\\BelajarPhpUnitTest\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Programmerzamannow\\BelajarPhpUnitTest\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "ozankaze"
