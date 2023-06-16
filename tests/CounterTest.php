@@ -4,6 +4,7 @@
 
 namespace Programmerzamannow\BelajarPhpUnitTest;
 
+use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 
 class CounterTest extends TestCase 
@@ -12,14 +13,17 @@ class CounterTest extends TestCase
     public function testCounter()
     {
         $result = new Counter();
-        $result->increment();
-        $result->increment();
-        echo $result->getCounter() . PHP_EOL;
-    }
+        
+        // 31
 
-    public function testOther()
-    {
-        echo "Hello Kaka :D" . PHP_EOL;
+        $result->increment();
+        Assert::assertEquals(1, $result->getCounter());
+
+        $result->increment();
+        $this->assertEquals(2, $result->getCounter());
+
+        $result->increment();
+        self::assertEquals(3, $result->getCounter());
     }
 
 }
