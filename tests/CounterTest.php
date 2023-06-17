@@ -26,4 +26,17 @@ class CounterTest extends TestCase
         self::assertEquals(3, $result->getCounter());
     }
 
+    /**
+     * @test
+     */
+    public function increment()
+    {
+        $result = new Counter();
+        
+        // 37
+
+        $result->increment();
+        Assert::assertEquals(1, $result->getCounter());
+    }
+
 }
