@@ -39,4 +39,24 @@ class CounterTest extends TestCase
         Assert::assertEquals(1, $result->getCounter());
     }
 
+    // 41
+    public function testFirst(): Counter
+    {
+        $result = new Counter();
+        $result->increment();
+        $result->increment();
+        $this->assertEquals(1, $result->getCounter());
+
+        return $result;
+    }
+
+    /**
+     * @depends testFirst
+     */
+    public function testSecond(Counter $result)
+    {
+        $result->increment();
+        $this->assertEquals(2, $result->getCounter());
+    }
+
 }
