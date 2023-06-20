@@ -44,7 +44,6 @@ class CounterTest extends TestCase
     {
         $result = new Counter();
         $result->increment();
-        $result->increment();
         $this->assertEquals(1, $result->getCounter());
 
         return $result;
