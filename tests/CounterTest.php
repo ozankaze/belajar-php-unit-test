@@ -10,20 +10,28 @@ use PHPUnit\Framework\TestCase;
 class CounterTest extends TestCase 
 {
 
+    // 61 Fixture
+    private Counter $counter;
+
+    protected function setUp(): void
+    {
+        $this->counter = new Counter();
+        echo "Membuat Counter" . PHP_EOL;         
+    }
+    
+
     public function testCounter()
     {
-        $result = new Counter();
-        
         // 31
 
-        $result->increment();
-        Assert::assertEquals(1, $result->getCounter());
+        $this->counter->increment();
+        Assert::assertEquals(1, $this->counter->getCounter());
 
-        $result->increment();
-        $this->assertEquals(2, $result->getCounter());
+        $this->counter->increment();
+        $this->assertEquals(2, $this->counter->getCounter());
 
-        $result->increment();
-        self::assertEquals(3, $result->getCounter());
+        $this->counter->increment();
+        self::assertEquals(3, $this->counter->getCounter());
     }
 
     /**
@@ -31,31 +39,43 @@ class CounterTest extends TestCase
      */
     public function increment()
     {
-        $result = new Counter();
-        
         // 37
 
-        $result->increment();
-        Assert::assertEquals(1, $result->getCounter());
+        $this->counter->increment();
+        Assert::assertEquals(1, $this->counter->getCounter());
     }
 
     // 41
     public function testFirst(): Counter
     {
-        $result = new Counter();
-        $result->increment();
-        $this->assertEquals(1, $result->getCounter());
 
-        return $result;
+        $this->counter->increment();
+        $this->assertEquals(1, $this->counter->getCounter());
+
+        return $this->counter;
     }
 
     /**
      * @depends testFirst
      */
-    public function testSecond(Counter $result)
+    public function testSecond(Counter $counter)
     {
-        $result->increment();
-        $this->assertEquals(2, $result->getCounter());
+        $counter->increment();
+        $this->assertEquals(2, $counter->getCounter());
+    }
+
+     // 61 Fixture
+    protected function tearDown(): void
+    {
+        echo "Tear down" . PHP_EOL;
+    }
+
+    /**
+     * @after
+     */
+    protected function after(): void
+    {
+        echo "After" . PHP_EOL;
     }
 
 }

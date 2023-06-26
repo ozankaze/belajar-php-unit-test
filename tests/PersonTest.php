@@ -8,24 +8,39 @@ use PHPUnit\Framework\TestCase;
 
 class PersonTest extends TestCase
 {
+
+    // 61 Fixture
+    private Person $person;
+
+    protected function setUp(): void
+    {
+        // $this->person = new Person("Seena");
+    }
+
+    /**
+     * @before
+     */
+    public function createPerson()
+    {
+        $this->person = new Person("Seena");
+    }
+    
     public function testSuccess()
     {
-        $result = new Person("Seena");
-        $this->assertEquals("Hello Budi, my name is Seena", $result->sayHello("Budi"));
+        // $result = new Person("Seena");
+        $this->assertEquals("Hello Budi, my name is Seena", $this->person->sayHello("Budi"));
     }
 
     public function testFailedException()
     {
-        $result = new Person("Seena");
         $this->expectException(\Exception::class);
-        $result->sayHello(null);
+        $this->person->sayHello(null);
     }
 
     // 57 Test Output
     public function testOutput()
     {
-        $result = new Person("Seena");
         $this->expectOutputString("Good bye Budi");
-        $result->sayGoodbye("Budi");
+        $this->person->sayGoodbye("Budi");
     }
 }
