@@ -19,4 +19,10 @@ class Person
 
         return "Hello $name, my name is $this->name";
     }
+
+    // 57 Test Output
+    public function sayGoodbye(?string $name)
+    {
+        echo "Good bye $name";
+    }
 }
