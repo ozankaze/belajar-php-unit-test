@@ -7,6 +7,8 @@ namespace Programmerzamannow\BelajarPhpUnitTest;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 
+use function PHPUnit\Framework\assertEquals;
+
 class CounterTest extends TestCase 
 {
 
@@ -16,9 +18,15 @@ class CounterTest extends TestCase
     protected function setUp(): void
     {
         $this->counter = new Counter();
-        echo "Membuat Counter" . PHP_EOL;         
+        // echo "Membuat Counter" . PHP_EOL;         
     }
     
+    // 77 Incomplete Test
+    public function testIncrement()
+    {
+        self::assertEquals(0, $this->counter->getCounter());
+        // self::markTestIncomplete("Blum selesai bagian ini tolong di perbaiki");
+    }
 
     public function testCounter()
     {
