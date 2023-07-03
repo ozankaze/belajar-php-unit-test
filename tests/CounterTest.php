@@ -47,7 +47,8 @@ class CounterTest extends TestCase
      */
     public function increment()
     {
-        // 37
+        // 37 -> Annotation || 83 -> Skip Test
+        self::markTestSkipped("Masih ada error di sini");
 
         $this->counter->increment();
         Assert::assertEquals(1, $this->counter->getCounter());
@@ -85,5 +86,15 @@ class CounterTest extends TestCase
     {
         echo "After" . PHP_EOL;
     }
+
+    /**
+     * @require PHP >= 8
+     * @require OSFAMILY Linux
+     */
+
+     public function testPHP8()
+     {
+        self::assertTrue(true, "Hanya untuk PHP 8");
+     }
 
 }
