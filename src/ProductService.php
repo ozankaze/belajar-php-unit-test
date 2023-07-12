@@ -23,4 +23,16 @@ class ProductService
         return $this->repository->save($product);
     }
 
+    // 108 Mock Object
+    public function delete(string $id): void
+    {
+        $product = $this->repository->findById($id);
+        
+        if($product == null){
+            throw new \Exception("Product is not founds");
+        }
+
+        $this->repository->delete($product);
+    }
+
 }
