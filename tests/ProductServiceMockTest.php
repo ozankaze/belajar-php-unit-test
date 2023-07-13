@@ -55,14 +55,12 @@ class ProductServiceMockTest extends TestCase
 
     public function testDeleteMockException()
     {
-        $this->repository->expects($this->never())
-        ->method("delete");
-        
-        $this->repository->expects($this->once())
-        ->method(self::equalTo("1"))
-        ->willReturn(null);
-        
         $this->expectException(\Exception::class);
+        $this->repository->expects(self::once())
+            ->method("findById")
+            ->willReturn(null)
+            ->with(self::equalTo("1"));
+
         $this->service->delete("1");
     }
     
