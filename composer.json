@@ -22,5 +22,10 @@
     },
     "require-dev": {
         "phpunit/phpunit": "10.2.2"
+    },
+    "scripts": {
+        "tests" : "phpunit --configuration phpunit.xml",
+        "tests:product" : "phpunit --configuration phpunit.xml --testsuite product",
+        "tests:counter" : "phpunit --configuration phpunit.xml --testsuite counter"
     }
 }
